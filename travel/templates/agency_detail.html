@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Travel App - {{ agency.name }}</title>
+</head>
+<body>
+    <h1>{{ agency.name }}</h1>
+    <p>Daftar Layanan:</p>
+    <ul>
+        {% for service in agency.services_offered.all %}
+            <li>{{ service.name }} - {{ service.price }}</li>
+        {% endfor %}
+    </ul>
+
+    <form action="{% url 'create_service' %}" method="post">
+        {% csrf_token %}
+        <label for="service_name">Nama Layanan:</label>
+        <input type="text" name="service_name" required>
+        <label for="service_description">Deskripsi Layanan:</label>
+        <textarea name="service_description" required></textarea>
+        <label for="service_price">Harga Layanan:</label>
+        <input type="number" name="service_price" required>
+        <label for="service_available_slots">Slot Tersedia:</label>
+        <input type="number" name="service_available_slots" required>
+        <button type="submit">Tambah Layanan</button>
+    </form>
+</body>
+</html>

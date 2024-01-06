@@ -1,0 +1,6 @@
+fastapi
+django
+python-dotenv
+djangorestframework
+uvicorn
+jinja2
